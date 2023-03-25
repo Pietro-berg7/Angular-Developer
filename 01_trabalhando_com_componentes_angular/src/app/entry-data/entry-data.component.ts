@@ -7,5 +7,6 @@ import { Component } from '@angular/core';
 })
 
 export class EntryDataComponent {
-  placeholder: string = "email";
+  placeholder:string = "email";
+  placepass:string = "senha";
 }
