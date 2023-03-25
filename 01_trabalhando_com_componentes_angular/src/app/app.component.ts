@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = '01-trabalhando-com-componentes-angular';
+  buttonLabel: string = "Carrinho";
+  buttonSecond: string = "Adicionar aos Favoritos";
 }
