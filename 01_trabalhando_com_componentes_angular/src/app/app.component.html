@@ -1,12 +1,12 @@
 <!-- data binding = associação de dados -->
 
 <!-- interpolação -->
-<my-button label="{{buttonLabel}}"></my-button>
-<my-button [label]="buttonSecond"></my-button>
+<my-button label="Notícia"></my-button>
+<my-button label="{{ buttonLabel }}"></my-button>
 
 <!-- property binding -->
-<my-button label="Notícia"></my-button>
-<my-button [label]="'buttonSecond'"></my-button>
+<my-button [label]="buttonSecond"></my-button>
+<my-button [label]="'CARRINHO'"></my-button>
 
 <!-- two way data binding -->
 <app-entry-data></app-entry-data>
