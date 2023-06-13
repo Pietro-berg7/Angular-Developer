@@ -22,6 +22,18 @@ export class CheckSampleComponent
     AfterViewChecked,
     AfterViewInit
 {
+  quantidade: number = 0;
+
+  constructor() {}
+
+  adicionar() {
+    this.quantidade += 1;
+  }
+
+  decrementar() {
+    this.quantidade -= 1;
+  }
+
   ngOnInit(): void {
     console.log('ngOnInit');
   }
