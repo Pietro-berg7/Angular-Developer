@@ -2,6 +2,8 @@
 <button (click)="trocar()">Change</button>
 <h1 [ngStyle]="{ background: corFundo, color: corDaFonte }">CURSO ANGULAR</h1>
 
+<ng-content select="h2"></ng-content>
+
 <h1>Lista de compras</h1>
 <p>Adicione um item</p>
 <input type="text" [(ngModel)]="item" />
@@ -23,3 +25,5 @@
 </ng-template>
 
 <hr />
+
+<ng-content select="p"></ng-content>
