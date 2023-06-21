@@ -5,7 +5,17 @@ import { CardComponent } from './pages/portfolio/card/card.component';
 
 const routes: Routes = [
   { path: '', component: TitleComponent, pathMatch: 'full' },
-  { path: 'portfolio/:id', component: CardComponent },
+  // portfolio
+  {
+    path: 'portfolio',
+    component: CardComponent,
+    children: [
+      // portfolio/1
+      { path: ':id', component: CardComponent },
+      // portfolio/1/abc
+      { path: ':id/:token', component: CardComponent },
+    ],
+  },
   { path: '**', redirectTo: '' },
 ];
 
