@@ -22,7 +22,11 @@ export class CardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.getPokemon('dragonite').subscribe({
+    this.getPokemon('pikachu');
+  }
+
+  getPokemon(searchName: string) {
+    this.service.getPokemon(searchName).subscribe({
       next: (res) => {
         this.pokemon = {
           id: res.id,
@@ -31,7 +35,7 @@ export class CardComponent implements OnInit {
           types: res.types,
         };
       },
-      error: (err) => console.log(err),
+      error: (err) => console.log('not found'),
     });
   }
 }
