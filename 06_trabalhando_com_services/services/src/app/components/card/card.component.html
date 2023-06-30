@@ -8,8 +8,8 @@
   </div>
 
   <div class="card__stats">
-    <span class="card__stats__type" *ngFor="let type of attributesTypes">
-      {{ type }}
+    <span class="card__stats__type" *ngFor="let t of pokemon.types">
+      {{ t.type.name }}
     </span>
   </div>
 </div>
