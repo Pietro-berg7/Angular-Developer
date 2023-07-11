@@ -27,7 +27,7 @@
                 cadastroForm.get('nome')?.touched)
             "
           >
-            <p>Preencha o campo nome</p>
+            <p>Preencha o campo Nome</p>
           </span>
         </div>
       </div>
@@ -41,7 +41,33 @@
             type="text"
             placeholder="CPF (requerido)"
             formControlName="cpf"
+            [ngClass]="{
+              'is-invalid':
+                cadastroForm.get('cpf')?.errors &&
+                (cadastroForm.get('cpf')?.dirty ||
+                  cadastroForm.get('cpf')?.touched)
+            }"
           />
+          <span
+            class="text-danger"
+            *ngIf="
+              cadastroForm.get('cpf')?.errors?.['required'] &&
+              (cadastroForm.get('cpf')?.dirty ||
+                cadastroForm.get('cpf')?.touched)
+            "
+          >
+            <p>Preencha o campo CPF</p>
+          </span>
+          <span
+            class="text-danger"
+            *ngIf="
+              cadastroForm.get('cpf')?.errors?.['cpfInvalido'] &&
+              (cadastroForm.get('cpf')?.dirty ||
+                cadastroForm.get('cpf')?.touched)
+            "
+          >
+            <p>CPF inválido</p>
+          </span>
         </div>
       </div>
 
@@ -69,7 +95,7 @@
                 cadastroForm.get('email')?.touched)
             "
           >
-            <p>Preencha o campo email</p>
+            <p>Preencha o campo E-mail</p>
           </span>
           <span
             class="text-danger"
@@ -93,7 +119,43 @@
             type="password"
             placeholder="Senha (requerido)"
             formControlName="senha"
+            [ngClass]="{
+              'is-invalid':
+                cadastroForm.get('senha')?.errors &&
+                (cadastroForm.get('senha')?.dirty ||
+                  cadastroForm.get('senha')?.touched)
+            }"
           />
+          <span
+            class="text-danger"
+            *ngIf="
+              cadastroForm.get('senha')?.errors?.['required'] &&
+              (cadastroForm.get('senha')?.dirty ||
+                cadastroForm.get('senha')?.touched)
+            "
+          >
+            <p>Preencha o campo Senha</p>
+          </span>
+          <span
+            class="text-danger"
+            *ngIf="
+              cadastroForm.get('senha')?.errors?.['minlength'] &&
+              (cadastroForm.get('senha')?.dirty ||
+                cadastroForm.get('senha')?.touched)
+            "
+          >
+            <p>Sua senha deve conter 6 ou mais caracteres</p>
+          </span>
+          <span
+            class="text-danger"
+            *ngIf="
+              cadastroForm.get('senha')?.errors?.['maxlength'] &&
+              (cadastroForm.get('senha')?.dirty ||
+                cadastroForm.get('senha')?.touched)
+            "
+          >
+            <p>Sua senha não pode conter mais de 15 caracteres</p>
+          </span>
         </div>
       </div>
 
@@ -108,7 +170,57 @@
             type="password"
             placeholder="Confirmar Senha (requerido)"
             formControlName="senhaConfirmacao"
+            [ngClass]="{
+              'is-invalid':
+                cadastroForm.get('senhaConfirmacao')?.errors &&
+                (cadastroForm.get('senhaConfirmacao')?.dirty ||
+                  cadastroForm.get('senhaConfirmacao')?.touched)
+            }"
           />
+          <span
+            class="text-danger"
+            *ngIf="
+              cadastroForm.get('senhaConfirmacao')?.errors?.['required'] &&
+              (cadastroForm.get('senhaConfirmacao')?.dirty ||
+                cadastroForm.get('senhaConfirmacao')?.touched)
+            "
+          >
+            <p>Preencha o campo de confirmação de Senha</p>
+          </span>
+          <span
+            class="text-danger"
+            *ngIf="
+              cadastroForm.get('senhaConfirmacao')?.errors?.['minlength'] &&
+              (cadastroForm.get('senhaConfirmacao')?.dirty ||
+                cadastroForm.get('senhaConfirmacao')?.touched)
+            "
+          >
+            <p>Sua Confirmação de Senha deve conter 6 ou mais caracteres</p>
+          </span>
+          <span
+            class="text-danger"
+            *ngIf="
+              cadastroForm.get('senhaConfirmacao')?.errors?.['maxlength'] &&
+              (cadastroForm.get('senhaConfirmacao')?.dirty ||
+                cadastroForm.get('senhaConfirmacao')?.touched)
+            "
+          >
+            <p>
+              Sua Confirmação de Senha não pode conter mais de 15 caracteres
+            </p>
+          </span>
+          <span
+            class="text-danger"
+            *ngIf="
+              cadastroForm.get('senhaConfirmacao')?.value.length >= 6 &&
+              cadastroForm.get('senhaConfirmacao')?.value.length <= 15 &&
+              cadastroForm.hasError('senhaNaoCoincide') &&
+              (cadastroForm.get('senhaConfirmacao')?.dirty ||
+                cadastroForm.get('senhaConfirmacao')?.touched)
+            "
+          >
+            <p>A Senha e a Confirmação de Senha devem ser iguais</p>
+          </span>
         </div>
       </div>
 
