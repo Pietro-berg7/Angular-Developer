@@ -11,11 +11,11 @@ export function cpfValidator(): ValidatorFn {
     const cleanedCPF = cpf.replace(/\D/g, '');
 
     if (cleanedCPF.length !== 11) {
-      return { cpfInvalido: true };
+      return { cpf: true };
     }
 
     if (/^(\d)\1+$/.test(cleanedCPF)) {
-      return { cpfInvalido: true };
+      return { cpf: true };
     }
 
     let sum = 0;
@@ -28,7 +28,7 @@ export function cpfValidator(): ValidatorFn {
     }
 
     if (parseInt(cleanedCPF.charAt(9)) !== digit) {
-      return { cpfInvalido: true };
+      return { cpf: true };
     }
 
     sum = 0;
@@ -41,7 +41,7 @@ export function cpfValidator(): ValidatorFn {
     }
 
     if (parseInt(cleanedCPF.charAt(10)) !== digit) {
-      return { cpfInvalido: true };
+      return { cpf: true };
     }
 
     return null;
