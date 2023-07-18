@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { Produto } from '../models/produto';
 
@@ -15,4 +15,11 @@ export class ProdutoDetalheComponent {
     valor: 0,
     imagem: '',
   };
+
+  @Output()
+  status: EventEmitter<any> = new EventEmitter();
+
+  emitirEvento(): void {
+    this.status.emit(this.produto);
+  }
 }
