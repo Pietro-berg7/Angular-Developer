@@ -22,6 +22,13 @@ const routes: Routes = [
     path: 'cadastro',
     component: CadastroComponent,
   },
+  {
+    path: 'produtos',
+    loadChildren: () =>
+      import('./demos/arquitetura-componentes/produto.module').then(
+        (m) => m.ProdutoModule
+      ),
+  },
 ];
 
 @NgModule({
