@@ -1,15 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  QueryList,
+  ViewChild,
+  ViewChildren,
+} from '@angular/core';
 
 import { Produto } from '../models/produto';
+import { Observable, fromEvent } from 'rxjs';
+import { ProdutoCountComponent } from '../components/produto-count.component';
+import { ProdutoDetalheComponent } from '../components/produto-card-detalhe.component';
 
 @Component({
   selector: 'app-produto-dashboard',
   templateUrl: './produto-dashboard.component.html',
 })
-export class ProdutoDashboardComponent implements OnInit {
+export class ProdutoDashboardComponent implements OnInit, AfterViewInit {
   produtos: Produto[] = [];
 
-  constructor() {}
+  @ViewChild(ProdutoCountComponent, { static: false })
+  contador: ProdutoCountComponent;
+  @ViewChild('teste', { static: false })
+  mensagemTela: ElementRef;
+
+  @ViewChildren(ProdutoDetalheComponent)
+  botoes: QueryList<ProdutoDetalheComponent>;
+
+  constructor() {
+    this.mensagemTela = new ElementRef(null);
+    this.contador = new ProdutoCountComponent();
+    this.botoes = new QueryList();
+  }
 
   ngOnInit() {
     this.produtos = [
@@ -56,6 +79,25 @@ export class ProdutoDashboardComponent implements OnInit {
         imagem: 'headset.jpg',
       },
     ];
+  }
+
+  ngAfterViewInit(): void {
+    console.log('Objeto do contador: ', this.contador.produtos);
+
+    let clickText: Observable<any> = fromEvent(
+      this.mensagemTela.nativeElement,
+      'click'
+    );
+
+    clickText.subscribe(() => {
+      alert('Clicou no texto!');
+      return;
+    });
+
+    console.log(this.botoes);
+    this.botoes.forEach((p) => {
+      console.log(p.produto);
+    });
   }
 
   mudarStatus(event: Produto) {
